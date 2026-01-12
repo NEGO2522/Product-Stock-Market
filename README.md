@@ -1,16 +1,64 @@
-# React + Vite
+# MoneyTree
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+MoneyTree is a digital platform that helps people choose the right financial products based on their personal needs.
 
-Currently, two official plugins are available:
+It removes confusion from investing by showing clear comparisons, costs, and recommendations in one place.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## What problem it solves
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Most people don’t know:
+- Which broker to choose  
+- Where to invest  
+- Which platform is best for them  
+- How much they are really paying in fees  
 
-## Expanding the ESLint configuration
+They depend on YouTube, ads, or random advice, which leads to bad financial decisions.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## What MoneyTree does
+
+MoneyTree analyzes a user’s goals, experience, and budget, then shows the most suitable financial platforms and products.
+
+Instead of guessing, users get structured and simple guidance.
+
+MoneyTree does not sell hype.  
+It shows real data and clear options.
+
+---
+
+## How it works
+
+1. User enters their profile (experience, capital, goals)  
+2. MoneyTree analyzes the input  
+3. The platform compares available financial services  
+4. The user sees the best-fit options  
+5. The user selects what works for them  
+
+Everything is simple and transparent.
+
+---
+
+## Who this is for
+
+- Beginners starting their investment journey  
+- Students and first-time earners  
+- People confused by too many financial choices  
+
+---
+
+## What makes this different
+
+- No promotional bias  
+- Simple comparisons instead of complicated charts  
+- Focus on the user’s real needs  
+- Clear cost and feature breakdown  
+- Built for people who don’t understand finance deeply  
+
+---
+
+## Vision
+
+To become a trusted decision platform that helps millions of people make smarter financial choices without being misled.
