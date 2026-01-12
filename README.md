@@ -62,3 +62,7 @@ Everything is simple and transparent.
 ## Vision
 
 To become a trusted decision platform that helps millions of people make smarter financial choices without being misled.
+
+## License
+
+This project is licensed under the MIT License.
