@@ -1,6 +1,14 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
+import { 
+  getAuth, 
+  GoogleAuthProvider, 
+  signInWithPopup, 
+  sendSignInLinkToEmail,
+  isSignInWithEmailLink,
+  signInWithEmailLink
+} from "firebase/auth";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -19,3 +27,29 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
+
+// Initialize Firebase Authentication and get a reference to the service
+const auth = getAuth(app);
+const googleProvider = new GoogleAuthProvider();
+
+// Configure the authentication persistence
+auth.setPersistence('local');
+
+// Email link configuration
+const actionCodeSettings = {
+  // URL you want to redirect back to after email sign in
+  url: window.location.origin + '/complete-signin',
+  // This must be true for email link sign-in
+  handleCodeInApp: true,
+};
+
+export { 
+  auth, 
+  app, 
+  googleProvider, 
+  signInWithPopup, 
+  sendSignInLinkToEmail, 
+  isSignInWithEmailLink, 
+  signInWithEmailLink,
+  actionCodeSettings
+};
