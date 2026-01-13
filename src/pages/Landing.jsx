@@ -189,9 +189,8 @@ const Landing = () => {
               <div className="flex space-x-6 mt-4 md:mt-0">
                 {[
                   { name: 'Privacy Policy', path: '/privacy-policy' },
-                  { name: 'Terms of Service', path: '#' },
-                  { name: 'Cookie Policy', path: '#' },
-                  { name: 'GDPR', path: '#' }
+                  { name: 'Terms of Service', path: '/terms' },
+                  { name: 'Connect Us', path: '/connect-us' }
                 ].map((item) => (
                   <Link
                     key={item.name}
