@@ -281,6 +281,37 @@ const Landing = () => {
               </div>
             </div>
           </div>
+
+          {/* Featured Banks */}
+          <div className="mt-16">
+            <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">Featured Banks</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-4xl mx-auto">
+              {[
+                { name: 'HDFC Bank', logo: 'H' },
+                { name: 'SBI', logo: 'S' },
+                { name: 'ICICI Bank', logo: 'I' },
+                { name: 'Axis Bank', logo: 'A' },
+                { name: 'Kotak Mahindra', logo: 'K' },
+                { name: 'PNB', logo: 'P' }
+              ].map((bank) => (
+                <div key={bank.name} className="p-4 border-2 border-gray-300 bg-white rounded-lg hover:shadow-md transition-all duration-300 flex flex-col items-center">
+                  <div className="h-16 w-16 rounded-full bg-green-100 flex items-center justify-center text-green-600 font-bold text-2xl mb-3">
+                    {bank.logo}
+                  </div>
+                  <h3 className="font-medium text-gray-900 text-center">{bank.name}</h3>
+                  <p className="text-xs text-gray-500 mt-1 text-center">Interest Rates & Offers</p>
+                </div>
+              ))}
+            </div>
+            <div className="mt-8 text-center">
+              <button className="bg-gray-900 hover:bg-gray-700 text-white px-6 py-2 rounded-md text-sm font-medium transition-colors inline-flex items-center">
+                View All Banks
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+            </div>
+          </div>
         </div>
       </div>
 
