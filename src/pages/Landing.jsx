@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { BarChart2, TrendingUp, Shield, Zap, Check, X } from 'lucide-react';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import { db } from '../firebase/firebase';
-import { Menu, Transition } from '@headlessui/react';
+import { BarChart2, TrendingUp, Shield, ArrowRight, MessageSquare, BookOpen, CreditCard, Landmark } from 'lucide-react';
 
 const Landing = () => {
   const [email, setEmail] = useState('');
@@ -44,8 +43,8 @@ const Landing = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-r from-blue-100 via-slate-100 to-orange-100 text-gray-800">
-      {/* Navigation */}
-      <nav className="bg-gradient-to-r from-blue-100 via-slate-100 to-orange-100">
+      {/* Desktop Navigation */}
+      <nav className="hidden md:block bg-gradient-to-r from-blue-100 via-slate-100 to-orange-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16">
             <div className="flex items-center">
@@ -87,27 +86,69 @@ const Landing = () => {
         </div>
       </nav>
 
+      {/* Mobile Header */}
+      <div className="md:hidden fixed top-0 left-0 right-0 bg-gradient-to-r from-blue-100 via-slate-100 to-orange-100 z-50">
+        <div className="flex items-center justify-between h-14 px-4">
+          <div className="flex items-center">
+            <BarChart2 className="h-7 w-7 text-gray-800" />
+            <span className="ml-2 text-xl font-bold text-gray-900">Money tree</span>
+          </div>
+          <Link 
+            to="/login" 
+            className="bg-gray-900 text-white px-3 py-1.5 rounded-md text-sm font-medium hover:bg-gray-700 transition-all"
+          >
+            Account
+          </Link>
+        </div>
+      </div>
+
+      {/* Mobile Bottom Navigation */}
+      <div className="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 z-50">
+        <div className="flex justify-around items-center h-14">
+          <Link to="/banks" className="flex flex-col items-center justify-center w-full h-full text-gray-700 hover:text-gray-900 transition-colors">
+            <Landmark className="h-5 w-5" />
+            <span className="text-xs mt-0.5">Banks</span>
+          </Link>
+          <Link to="/brokers" className="flex flex-col items-center justify-center w-full h-full text-gray-700 hover:text-gray-900 transition-colors">
+            <BarChart2 className="h-5 w-5" />
+            <span className="text-xs mt-0.5">Brokers</span>
+          </Link>
+          <Link to="/credit-cards" className="flex flex-col items-center justify-center w-full h-full text-gray-700 hover:text-gray-900 transition-colors">
+            <CreditCard className="h-5 w-5" />
+            <span className="text-xs mt-0.5">Cards</span>
+          </Link>
+          <Link to="/connect-us" className="flex flex-col items-center justify-center w-full h-full text-gray-700 hover:text-gray-900 transition-colors">
+            <MessageSquare className="h-5 w-5" />
+            <span className="text-xs mt-0.5">Connect</span>
+          </Link>
+          <Link to="/docs" className="flex flex-col items-center justify-center w-full h-full text-gray-700 hover:text-gray-900 transition-colors">
+            <BookOpen className="h-5 w-5" />
+            <span className="text-xs mt-0.5">Docs</span>
+          </Link>
+        </div>
+      </div>
+
       {/* Hero Section */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-10 md:pt-10 md:pb-20">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
           <div className="lg:w-1/2">
-            <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
+            <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold text-gray-900 mb-4 sm:mb-6">
               Smart Investing <br />
               <span className="text-gray-900">Made Simple</span>
             </h1>
-            <p className="mt-6 text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="mt-4 sm:mt-6 text-base sm:text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
               Access real-time market data, advanced analytics, and powerful tools to make informed investment decisions.
             </p>
-            <div className="mt-10">
+            <div className="mt-6 sm:mt-10 flex flex-col sm:flex-row gap-3 sm:gap-4">
               <Link
                 to="/brokers"
-                className="bg-gray-900 text-white px-8 py-3 rounded-md text-lg font-medium hover:bg-gray-700 transition-colors"
+                className="bg-gray-900 text-white px-6 sm:px-8 py-2 sm:py-3 rounded-md text-base sm:text-lg font-medium hover:bg-gray-700 transition-colors text-center"
               >
                 Compare Stocks
               </Link>
               <Link 
                 to="/docs" 
-                className="ml-4 px-8 py-3 border border-gray-300 rounded-md text-gray-700 font-medium hover:bg-gray-100 transition-colors"
+                className="px-6 sm:px-8 py-2 sm:py-3 border border-gray-300 rounded-md text-gray-700 font-medium hover:bg-gray-100 transition-colors text-center"
               >
                 Learn More
               </Link>
@@ -130,22 +171,22 @@ const Landing = () => {
       {/* Features Section */}
       <div className="bg-gradient-to-r from-blue-100 via-slate-100 to-orange-100 py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="p-6 bg-gradient-to-r from-blue-100 via-slate-100 to-orange-100 rounded-lg shadow-sm hover:shadow-md transition-all">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
+            <div className="p-4 sm:p-6 bg-gradient-to-r from-blue-100 via-slate-100 to-orange-100 rounded-lg shadow-sm hover:shadow-md transition-all h-full">
               <div className="h-12 w-12 rounded-full bg-gray-100 flex items-center justify-center mb-4">
                 <TrendingUp className="h-6 w-6 text-gray-800" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-2">Real-time Data</h3>
               <p className="text-gray-600">Access up-to-the-minute stock prices and market data to stay ahead of the curve.</p>
             </div>
-            <div className="p-6 bg-gradient-to-r from-blue-100 via-slate-100 to-orange-100 rounded-lg shadow-sm hover:shadow-md transition-all">
+            <div className="p-4 sm:p-6 bg-gradient-to-r from-blue-100 via-slate-100 to-orange-100 rounded-lg shadow-sm hover:shadow-md transition-all h-full">
               <div className="h-12 w-12 rounded-full bg-gray-100 flex items-center justify-center mb-4">
                 <BarChart2 className="h-6 w-6 text-gray-800" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-2">Advanced Analytics</h3>
               <p className="text-gray-600">Powerful tools and visualizations to analyze market trends and patterns.</p>
             </div>
-            <div className="p-6 bg-gradient-to-r from-blue-100 via-slate-100 to-orange-100 rounded-lg shadow-sm hover:shadow-md transition-all">
+            <div className="p-4 sm:p-6 bg-gradient-to-r from-blue-100 via-slate-100 to-orange-100 rounded-lg shadow-sm hover:shadow-md transition-all h-full">
               <div className="h-12 w-12 rounded-full bg-gray-100 flex items-center justify-center mb-4">
                 <Shield className="h-6 w-6 text-gray-800" />
               </div>
@@ -159,7 +200,7 @@ const Landing = () => {
       {/* Featured Brokers & Credit Cards */}
       <div className="bg-gradient-to-r from-blue-100 via-slate-100 to-orange-100 py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row gap-8">
+          <div className="flex flex-col lg:flex-row gap-8">
             {/* Featured Brokers */}
             <div className="flex-1">
               <h2 className="text-2xl font-bold text-gray-900 mb-6">Featured Brokers</h2>
@@ -187,7 +228,7 @@ const Landing = () => {
                   }
                 ].map((broker) => (
                   <Link to="/brokers" key={broker.name} className="block">
-                    <div className="p-4 border-2 border-gray-300 bg-white rounded-lg hover:shadow-md transition-all duration-300 h-full">
+                    <div className="p-3 sm:p-4 border-2 border-gray-300 bg-white rounded-lg hover:shadow-md transition-all duration-300 h-full">
                       <div className="h-12 w-12 rounded-full bg-white flex items-center justify-center overflow-hidden mb-3 border border-gray-200">
                         <img 
                           src={broker.logo} 
@@ -199,7 +240,7 @@ const Landing = () => {
                           }}
                         />
                       </div>
-                      <h3 className="font-medium text-gray-900">{broker.name}</h3>
+                      <h3 className="font-medium text-gray-900 text-sm sm:text-base">{broker.name}</h3>
                       <p className="text-sm text-gray-500 mt-1">Compare & Open Account</p>
                     </div>
                   </Link>
@@ -216,7 +257,7 @@ const Landing = () => {
             </div>
 
             {/* Divider */}
-            <div className="hidden md:block w-px bg-gray-200"></div>
+            <div className="hidden lg:block w-px bg-gray-200"></div>
 
             {/* Featured Credit Cards */}
             <div className="flex-1">
@@ -245,7 +286,7 @@ const Landing = () => {
                   }
                 ].map((card) => (
                   <Link to="/credit-cards" key={card.name} className="block">
-                    <div className="p-4 border-2 border-gray-300 bg-white rounded-lg hover:shadow-md transition-all duration-300 h-full">
+                    <div className="p-3 sm:p-4 border-2 border-gray-300 bg-white rounded-lg hover:shadow-md transition-all duration-300 h-full">
                       <div className="h-12 w-12 rounded-full bg-white flex items-center justify-center overflow-hidden mb-3 border border-gray-200">
                         <img 
                           src={card.logo} 
@@ -257,7 +298,7 @@ const Landing = () => {
                           }}
                         />
                       </div>
-                      <h3 className="font-medium text-gray-900">{card.name}</h3>
+                      <h3 className="font-medium text-gray-900 text-sm sm:text-base">{card.name}</h3>
                       <p className="text-sm text-gray-500 mt-1">Check Eligibility & Apply</p>
                     </div>
                   </Link>
@@ -277,7 +318,7 @@ const Landing = () => {
           {/* Featured Banks */}
           <div className="mt-16">
             <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">Featured Banks</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-4xl mx-auto">
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 sm:gap-6 max-w-4xl mx-auto">
               {[
                 { 
                   name: 'HDFC Bank', 
@@ -311,8 +352,8 @@ const Landing = () => {
                 }
               ].map((bank) => (
                 <Link to="/banks" key={bank.name} className="block">
-                  <div className="p-4 border-2 border-gray-300 bg-white rounded-lg hover:shadow-md transition-all duration-300 flex flex-col items-center h-full">
-                    <div className="h-16 w-16 rounded-full bg-white flex items-center justify-center overflow-hidden mb-3">
+                  <div className="p-3 sm:p-4 border-2 border-gray-300 bg-white rounded-lg hover:shadow-md transition-all duration-300 flex flex-col items-center h-full">
+                    <div className="h-12 w-12 sm:h-14 sm:w-14 md:h-16 md:w-16 rounded-full bg-white flex items-center justify-center overflow-hidden mb-2 sm:mb-3">
                       <img 
                         src={bank.logo} 
                         alt={bank.alt} 
@@ -323,8 +364,8 @@ const Landing = () => {
                         }}
                       />
                     </div>
-                    <h3 className="font-medium text-gray-900 text-center">{bank.name}</h3>
-                    <p className="text-xs text-gray-500 mt-1 text-center">Interest Rates & Offers</p>
+                    <h3 className="font-medium text-gray-900 text-center text-sm sm:text-base">{bank.name}</h3>
+                    <p className="text-xs text-gray-500 mt-1 text-center hidden sm:block">Interest Rates & Offers</p>
                   </div>
                 </Link>
               ))}
