@@ -6,6 +6,9 @@ import PrivacyPolicy from './components/PrivacyPolicy';
 import TermService from './components/TermService';
 import ConnectUs from './components/ConnectUs';
 import Docs from './pages/Docs';
+import Brokers from './pages/Brokers';
+import Bank from './pages/Bank';
+import CreditCard from './pages/CreditCard';
 
 function App() {
   return (
@@ -18,6 +21,9 @@ function App() {
           <Route path="/connect-us" element={<ConnectUs />} />
           <Route path="/login" element={<Login />} />
           <Route path="/docs" element={<Docs />} />
+          <Route path="/brokers" element={<Brokers />} />
+          <Route path="/banks" element={<Bank />} />
+          <Route path="/credit-cards" element={<CreditCard />} />
         </Routes>
       </div>
     </Router>
