@@ -129,7 +129,7 @@ const Landing = () => {
       </div>
 
       {/* Hero Section */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-10 md:pt-10 md:pb-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 md:pt-10 md:pb-20">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
           <div className="lg:w-1/2">
             <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold text-gray-900 mb-4 sm:mb-6">
@@ -156,8 +156,8 @@ const Landing = () => {
           </div>
           
           {/* Static Image */}
-          <div className="lg:w-1/2 mt-10 lg:mt-0">
-            <div className="bg-white p-4 rounded-xl shadow-xl h-80">
+          <div className="lg:w-1/2 mt-6 lg:mt-0">
+            <div className="bg-white p-3 rounded-xl shadow-xl h-72 md:h-80">
               <img 
                 src="/stock.jpg" 
                 alt="Stock Market Data Visualization"
@@ -204,7 +204,7 @@ const Landing = () => {
             {/* Featured Brokers */}
             <div className="flex-1">
               <h2 className="text-2xl font-bold text-gray-900 mb-6">Featured Brokers</h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div className="grid grid-cols-2 gap-4 sm:gap-6">
                 {[
                   { 
                     name: 'Zerodha', 
@@ -228,7 +228,7 @@ const Landing = () => {
                   }
                 ].map((broker) => (
                   <Link to="/brokers" key={broker.name} className="block">
-                    <div className="p-3 sm:p-4 border-2 border-gray-300 bg-white rounded-lg hover:shadow-md transition-all duration-300 h-full">
+                    <div className="p-2 sm:p-4 border-2 border-gray-300 bg-white rounded-lg hover:shadow-md transition-all duration-300 h-full">
                       <div className="h-12 w-12 rounded-full bg-white flex items-center justify-center overflow-hidden mb-3 border border-gray-200">
                         <img 
                           src={broker.logo} 
@@ -262,7 +262,7 @@ const Landing = () => {
             {/* Featured Credit Cards */}
             <div className="flex-1">
               <h2 className="text-2xl font-bold text-gray-900 mb-6">Featured Credit Cards</h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div className="grid grid-cols-2 gap-4 sm:gap-6">
                 {[
                   { 
                     name: 'HDFC Millennia', 
@@ -286,7 +286,7 @@ const Landing = () => {
                   }
                 ].map((card) => (
                   <Link to="/credit-cards" key={card.name} className="block">
-                    <div className="p-3 sm:p-4 border-2 border-gray-300 bg-white rounded-lg hover:shadow-md transition-all duration-300 h-full">
+                    <div className="p-2 sm:p-4 border-2 border-gray-300 bg-white rounded-lg hover:shadow-md transition-all duration-300 h-full">
                       <div className="h-12 w-12 rounded-full bg-white flex items-center justify-center overflow-hidden mb-3 border border-gray-200">
                         <img 
                           src={card.logo} 
