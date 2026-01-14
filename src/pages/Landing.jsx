@@ -100,14 +100,17 @@ const Landing = () => {
             </p>
             <div className="mt-10">
               <Link
-                to="/register"
+                to="/brokers"
                 className="bg-gray-900 text-white px-8 py-3 rounded-md text-lg font-medium hover:bg-gray-700 transition-colors"
               >
-                Start Free Trial
+                Compare Stocks
               </Link>
-              <button className="ml-4 px-8 py-3 border border-gray-300 rounded-md text-gray-700 font-medium hover:bg-gray-100 transition-colors">
+              <Link 
+                to="/docs" 
+                className="ml-4 px-8 py-3 border border-gray-300 rounded-md text-gray-700 font-medium hover:bg-gray-100 transition-colors"
+              >
                 Learn More
-              </button>
+              </Link>
             </div>
           </div>
           
@@ -167,13 +170,15 @@ const Landing = () => {
                   { name: 'Groww', logo: 'G' },
                   { name: 'Angel One', logo: 'A' }
                 ].map((broker) => (
-                  <div key={broker.name} className="p-4 border-2 border-gray-300 bg-white rounded-lg hover:shadow-md transition-all duration-300">
-                    <div className="h-12 w-12 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-bold text-xl mb-3">
-                      {broker.logo}
+                  <Link to="/brokers" key={broker.name} className="block">
+                    <div className="p-4 border-2 border-gray-300 bg-white rounded-lg hover:shadow-md transition-all duration-300 h-full">
+                      <div className="h-12 w-12 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-bold text-xl mb-3">
+                        {broker.logo}
+                      </div>
+                      <h3 className="font-medium text-gray-900">{broker.name}</h3>
+                      <p className="text-sm text-gray-500 mt-1">Compare & Open Account</p>
                     </div>
-                    <h3 className="font-medium text-gray-900">{broker.name}</h3>
-                    <p className="text-sm text-gray-500 mt-1">Compare & Open Account</p>
-                  </div>
+                  </Link>
                 ))}
               </div>
               <div className="mt-6 text-center">
@@ -199,13 +204,15 @@ const Landing = () => {
                   { name: 'Axis Bank Ace', logo: 'A' },
                   { name: 'ICICI Amazon Pay', logo: 'I' }
                 ].map((card) => (
-                  <div key={card.name} className="p-4 border-2 border-gray-300 bg-white rounded-lg hover:shadow-md transition-all duration-300">
-                    <div className="h-12 w-12 rounded-full bg-orange-100 flex items-center justify-center text-orange-600 font-bold text-xl mb-3">
-                      {card.logo}
+                  <Link to="/credit-cards" key={card.name} className="block">
+                    <div className="p-4 border-2 border-gray-300 bg-white rounded-lg hover:shadow-md transition-all duration-300 h-full">
+                      <div className="h-12 w-12 rounded-full bg-orange-100 flex items-center justify-center text-orange-600 font-bold text-xl mb-3">
+                        {card.logo}
+                      </div>
+                      <h3 className="font-medium text-gray-900">{card.name}</h3>
+                      <p className="text-sm text-gray-500 mt-1">Check Eligibility & Apply</p>
                     </div>
-                    <h3 className="font-medium text-gray-900">{card.name}</h3>
-                    <p className="text-sm text-gray-500 mt-1">Check Eligibility & Apply</p>
-                  </div>
+                  </Link>
                 ))}
               </div>
               <div className="mt-6 text-center">
@@ -231,13 +238,15 @@ const Landing = () => {
                 { name: 'Kotak Mahindra', logo: 'K' },
                 { name: 'PNB', logo: 'P' }
               ].map((bank) => (
-                <div key={bank.name} className="p-4 border-2 border-gray-300 bg-white rounded-lg hover:shadow-md transition-all duration-300 flex flex-col items-center">
-                  <div className="h-16 w-16 rounded-full bg-green-100 flex items-center justify-center text-green-600 font-bold text-2xl mb-3">
-                    {bank.logo}
+                <Link to="/banks" key={bank.name} className="block">
+                  <div className="p-4 border-2 border-gray-300 bg-white rounded-lg hover:shadow-md transition-all duration-300 flex flex-col items-center h-full">
+                    <div className="h-16 w-16 rounded-full bg-green-100 flex items-center justify-center text-green-600 font-bold text-2xl mb-3">
+                      {bank.logo}
+                    </div>
+                    <h3 className="font-medium text-gray-900 text-center">{bank.name}</h3>
+                    <p className="text-xs text-gray-500 mt-1 text-center">Interest Rates & Offers</p>
                   </div>
-                  <h3 className="font-medium text-gray-900 text-center">{bank.name}</h3>
-                  <p className="text-xs text-gray-500 mt-1 text-center">Interest Rates & Offers</p>
-                </div>
+                </Link>
               ))}
             </div>
             <div className="mt-8 text-center">
