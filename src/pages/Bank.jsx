@@ -15,7 +15,7 @@ const banks = [
       '24/7 customer support',
       '1% cashback on debit card spends'
     ],
-    image: 'https://www.hdfcbank.com/content/api/contentstream-id/723fb80a-7d5c-4fde-8b25-389b0a3b8f2c/1f6e4a5f-6c47-4f3e-8b7f-9b9b9b9b9b9b/Personal/Home/Homepage/Images/logo.png',
+    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/HDFC_Bank_Logo.svg/960px-HDFC_Bank_Logo.svg.png',
     link: 'https://www.hdfcbank.com/'
   },
   {
@@ -30,7 +30,7 @@ const banks = [
       'Wide ATM network',
       'Government schemes'
     ],
-    image: 'https://www.sbi.co.in/documents/160/1128233/SBI-New-Logo.png',
+    image: 'https://media.licdn.com/dms/image/v2/C5612AQFVP19ZMIzzuw/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1620463532591?e=2147483647&v=beta&t=GB6ATQ0uEkuXvwYwP4njf-e8wqG0VsjESWawBPB_Kbg',
     link: 'https://www.sbi.co.in/'
   },
   {
@@ -45,7 +45,7 @@ const banks = [
       'Pre-approved loans',
       '24x7 customer care'
     ],
-    image: 'https://www.icicibank.com/managed-assets/images/header/logo.svg',
+    image: 'https://static.vecteezy.com/system/resources/previews/020/336/263/non_2x/icici-logo-icici-icon-free-free-vector.jpg',
     link: 'https://www.icicibank.com/'
   },
   {
@@ -60,7 +60,7 @@ const banks = [
       'Pre-approved offers',
       '24x7 customer support'
     ],
-    image: 'https://www.axisbank.com/images/default-source/revamp_new/logo/axis-logo.svg',
+    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0t8puDMM1wnf7zYIbaG_DkKAhyDSLIh17UQ&s',
     link: 'https://www.axisbank.com/'
   },
   {
@@ -232,34 +232,6 @@ const Bank = () => {
                 </div>
               </div>
             ))}
-          </div>
-        </div>
-
-        {/* Why Choose Us Section */}
-        <div className="bg-white rounded-xl shadow-md p-8 mb-12">
-          <h2 className="text-2xl font-bold text-gray-900 mb-8 text-center">Why Compare with Us?</h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="text-center">
-              <div className="h-12 w-12 rounded-full bg-blue-100 flex items-center justify-center mx-auto mb-4">
-                <Shield className="h-6 w-6 text-blue-600" />
-              </div>
-              <h3 className="text-lg font-medium text-gray-900 mb-2">Secure & Trusted</h3>
-              <p className="text-gray-600">We prioritize your data security and privacy with bank-level encryption.</p>
-            </div>
-            <div className="text-center">
-              <div className="h-12 w-12 rounded-full bg-blue-100 flex items-center justify-center mx-auto mb-4">
-                <Globe className="h-6 w-6 text-blue-600" />
-              </div>
-              <h3 className="text-lg font-medium text-gray-900 mb-2">Wide Selection</h3>
-              <p className="text-gray-600">Compare accounts from all major banks in one place.</p>
-            </div>
-            <div className="text-center">
-              <div className="h-12 w-12 rounded-full bg-blue-100 flex items-center justify-center mx-auto mb-4">
-                <Zap className="h-6 w-6 text-blue-600" />
-              </div>
-              <h3 className="text-lg font-medium text-gray-900 mb-2">Quick & Easy</h3>
-              <p className="text-gray-600">Open an account in minutes with our streamlined process.</p>
-            </div>
           </div>
         </div>
 
