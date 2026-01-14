@@ -304,4 +304,4 @@ const Docs = () => {
   );
 };
 
-export default Docs;
+export default Docs;  
