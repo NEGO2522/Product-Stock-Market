@@ -165,15 +165,39 @@ const Landing = () => {
               <h2 className="text-2xl font-bold text-gray-900 mb-6">Featured Brokers</h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 {[
-                  { name: 'Zerodha', logo: 'Z' },
-                  { name: 'Upstox', logo: 'U' },
-                  { name: 'Groww', logo: 'G' },
-                  { name: 'Angel One', logo: 'A' }
+                  { 
+                    name: 'Zerodha', 
+                    logo: 'https://opensourcepledge.com/images/members/zerodha/logo.webp',
+                    alt: 'Zerodha Logo'
+                  },
+                  { 
+                    name: 'Upstox', 
+                    logo: 'https://media.licdn.com/dms/image/v2/C4E0BAQHqu3S3cd_R-g/company-logo_200_200/company-logo_200_200/0/1631600709019/upstox_logo?e=2147483647&v=beta&t=_cBwDHJkrw79EP2Hy_0y7mS6iWLfu5W17b8OjTuBPSE',
+                    alt: 'Upstox Logo'
+                  },
+                  { 
+                    name: 'Groww', 
+                    logo: 'https://upload.wikimedia.org/wikipedia/commons/b/bb/Groww_app_logo.png',
+                    alt: 'Groww Logo'
+                  },
+                  { 
+                    name: 'Angel One', 
+                    logo: 'https://yt3.googleusercontent.com/BUXdWI-gsrRXMa1uTwRW9I_DeRHKUwXYpBW-pd8r7hu2b5eCtXCAEzTL408aeUyrQIsyEIhjKMY=s900-c-k-c0x00ffffff-no-rj',
+                    alt: 'Angel One Logo'
+                  }
                 ].map((broker) => (
                   <Link to="/brokers" key={broker.name} className="block">
                     <div className="p-4 border-2 border-gray-300 bg-white rounded-lg hover:shadow-md transition-all duration-300 h-full">
-                      <div className="h-12 w-12 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-bold text-xl mb-3">
-                        {broker.logo}
+                      <div className="h-12 w-12 rounded-full bg-white flex items-center justify-center overflow-hidden mb-3 border border-gray-200">
+                        <img 
+                          src={broker.logo} 
+                          alt={broker.alt}
+                          className="h-full w-full object-contain p-1"
+                          onError={(e) => {
+                            e.target.onerror = null;
+                            e.target.src = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="%23e5e7eb"><rect width="100" height="100" rx="50"/><text x="50%" y="50%" font-size="40" text-anchor="middle" dy=".3em" fill="%236b7280" font-family="sans-serif">' + broker.name.charAt(0) + '</text></svg>';
+                          }}
+                        />
                       </div>
                       <h3 className="font-medium text-gray-900">{broker.name}</h3>
                       <p className="text-sm text-gray-500 mt-1">Compare & Open Account</p>
@@ -182,9 +206,9 @@ const Landing = () => {
                 ))}
               </div>
               <div className="mt-6 text-center">
-                <Link to="/brokers" className="text-blue-600 hover:text-blue-800 font-medium text-sm flex items-center justify-center w-full sm:w-auto mx-auto">
+                <Link to="/brokers" className="bg-gray-900 hover:bg-gray-700 text-white px-6 py-2 rounded-md text-sm font-medium transition-colors inline-flex items-center">
                   View More Brokers
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
                 </Link>
@@ -199,15 +223,39 @@ const Landing = () => {
               <h2 className="text-2xl font-bold text-gray-900 mb-6">Featured Credit Cards</h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 {[
-                  { name: 'HDFC Millennia', logo: 'H' },
-                  { name: 'SBI SimplyClick', logo: 'S' },
-                  { name: 'Axis Bank Ace', logo: 'A' },
-                  { name: 'ICICI Amazon Pay', logo: 'I' }
+                  { 
+                    name: 'HDFC Millennia', 
+                    logo: 'https://www.hdfc.bank.in/content/hdfcbankpws/in/en/personal-banking/credit-cards/millennia-credit-card/_jcr_content/root/container/container_704997858_/box_container/extendedteaser.coreimg.png/1765351865160/millennia-credit-card.png',
+                    alt: 'HDFC Millennia Credit Card'
+                  },
+                  { 
+                    name: 'SBI SimplyClick', 
+                    logo: 'https://i.pinimg.com/736x/11/bd/cd/11bdcdf25fad9a03dbf803d1a6b38e97.jpg',
+                    alt: 'SBI SimplyClick Credit Card'
+                  },
+                  { 
+                    name: 'Axis Bank Ace', 
+                    logo: 'https://www.finowings.com/financial-products/credit-cards/axis-bank/img/axis-bank-credit-card.jpg',
+                    alt: 'Axis Bank Ace Credit Card'
+                  },
+                  { 
+                    name: 'ICICI Amazon Pay', 
+                    logo: 'https://ibsintelligence.com/wp-content/uploads/2020/01/AmazonPayLogo-543.jpg',
+                    alt: 'ICICI Amazon Pay Credit Card'
+                  }
                 ].map((card) => (
                   <Link to="/credit-cards" key={card.name} className="block">
                     <div className="p-4 border-2 border-gray-300 bg-white rounded-lg hover:shadow-md transition-all duration-300 h-full">
-                      <div className="h-12 w-12 rounded-full bg-orange-100 flex items-center justify-center text-orange-600 font-bold text-xl mb-3">
-                        {card.logo}
+                      <div className="h-12 w-12 rounded-full bg-white flex items-center justify-center overflow-hidden mb-3 border border-gray-200">
+                        <img 
+                          src={card.logo} 
+                          alt={card.alt}
+                          className="h-full w-full object-contain p-1"
+                          onError={(e) => {
+                            e.target.onerror = null;
+                            e.target.src = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="%23e5e7eb"><rect width="100" height="100" rx="50"/><text x="50%" y="50%" font-size="40" text-anchor="middle" dy=".3em" fill="%236b7280" font-family="sans-serif">' + card.name.charAt(0) + '</text></svg>';
+                          }}
+                        />
                       </div>
                       <h3 className="font-medium text-gray-900">{card.name}</h3>
                       <p className="text-sm text-gray-500 mt-1">Check Eligibility & Apply</p>
@@ -216,9 +264,9 @@ const Landing = () => {
                 ))}
               </div>
               <div className="mt-6 text-center">
-                <Link to="/credit-cards" className="text-blue-600 hover:text-blue-800 font-medium text-sm flex items-center justify-center w-full sm:w-auto mx-auto">
+                <Link to="/credit-cards" className="bg-gray-900 hover:bg-gray-700 text-white px-6 py-2 rounded-md text-sm font-medium transition-colors inline-flex items-center">
                   View More Credit Cards
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
                 </Link>
@@ -231,17 +279,49 @@ const Landing = () => {
             <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">Featured Banks</h2>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-4xl mx-auto">
               {[
-                { name: 'HDFC Bank', logo: 'H' },
-                { name: 'SBI', logo: 'S' },
-                { name: 'ICICI Bank', logo: 'I' },
-                { name: 'Axis Bank', logo: 'A' },
-                { name: 'Kotak Mahindra', logo: 'K' },
-                { name: 'PNB', logo: 'P' }
+                { 
+                  name: 'HDFC Bank', 
+                  logo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcpTMzhrXL6tX7Co5j2M5wNTVzVFNd4UvdPg&s',
+                  alt: 'HDFC Bank Logo'
+                },
+                { 
+                  name: 'SBI', 
+                  logo: 'https://yt3.googleusercontent.com/NGhfS9Di_x-EquQdoHWnnCsws9C2ekE_qt5F6Cb9-Jllrecw86qwxr207V7Ffqv5bZAQYVU3e0k=s900-c-k-c0x00ffffff-no-rj',
+                  alt: 'SBI Logo'
+                },
+                { 
+                  name: 'ICICI Bank', 
+                  logo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3Yfl3u_FGS0L-sfnzW1kBeUqtwZnmAoztlg&s',
+                  alt: 'ICICI Bank Logo'
+                },
+                { 
+                  name: 'Axis Bank', 
+                  logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Axis_Bank_logo.svg/1280px-Axis_Bank_logo.svg.png',
+                  alt: 'Axis Bank Logo'
+                },
+                { 
+                  name: 'Kotak Mahindra', 
+                  logo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0x-5XTuch9fn5z1DFeFeNUI7iaWTAsN9Bpg&s',
+                  alt: 'Kotak Mahindra Logo'
+                },
+                { 
+                  name: 'PNB', 
+                  logo: 'https://vectorseek.com/wp-content/uploads/2023/09/Punjab-National-Bank-Pnb-Logo-Vector.svg-.png',
+                  alt: 'PNB Logo'
+                }
               ].map((bank) => (
                 <Link to="/banks" key={bank.name} className="block">
                   <div className="p-4 border-2 border-gray-300 bg-white rounded-lg hover:shadow-md transition-all duration-300 flex flex-col items-center h-full">
-                    <div className="h-16 w-16 rounded-full bg-green-100 flex items-center justify-center text-green-600 font-bold text-2xl mb-3">
-                      {bank.logo}
+                    <div className="h-16 w-16 rounded-full bg-white flex items-center justify-center overflow-hidden mb-3">
+                      <img 
+                        src={bank.logo} 
+                        alt={bank.alt} 
+                        className="h-full w-full object-contain p-1"
+                        onError={(e) => {
+                          e.target.onerror = null;
+                          e.target.src = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="%23e5e7eb"><rect width="100" height="100" rx="50"/><text x="50%" y="50%" font-size="40" text-anchor="middle" dy=".3em" fill="%236b7280" font-family="sans-serif">' + bank.name.charAt(0) + '</text></svg>';
+                        }}
+                      />
                     </div>
                     <h3 className="font-medium text-gray-900 text-center">{bank.name}</h3>
                     <p className="text-xs text-gray-500 mt-1 text-center">Interest Rates & Offers</p>
