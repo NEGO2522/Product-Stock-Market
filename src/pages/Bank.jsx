@@ -1,6 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { Building2, Landmark, Wallet, CreditCard, ArrowRight, Percent, Shield, Globe, Zap, Check } from 'lucide-react';
+import { Building2, Landmark, Wallet, CreditCard, ArrowRight, Percent, Check, TreeDeciduous, Twitter, Instagram, Linkedin, Mail, Phone, Globe } from 'lucide-react';
+
+/* Ensure your global CSS includes the 'blob' and 'shine' animations 
+  provided in the previous Credit Card response.
+*/
 
 const banks = [
   {
@@ -9,28 +12,18 @@ const banks = [
     type: 'Private Bank',
     interestRate: '2.50% - 6.50%',
     minBalance: '₹2,500',
-    features: [
-      'Zero balance account option',
-      'Free virtual debit card',
-      '24/7 customer support',
-      '1% cashback on debit card spends'
-    ],
-    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/HDFC_Bank_Logo.svg/960px-HDFC_Bank_Logo.svg.png',
+    theme: 'from-[#0f172a] to-[#334155]',
+    features: ['Zero balance option', 'Free virtual debit card', '24/7 VIP support', '1% cashback on spends'],
     link: 'https://www.hdfcbank.com/'
   },
   {
     id: 2,
     name: 'State Bank of India',
-    type: 'Public Sector Bank',
+    type: 'Public Sector',
     interestRate: '2.90% - 6.80%',
     minBalance: '₹1,000',
-    features: [
-      'Zero balance basic account',
-      'Free digital banking',
-      'Wide ATM network',
-      'Government schemes'
-    ],
-    image: 'https://media.licdn.com/dms/image/v2/C5612AQFVP19ZMIzzuw/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1620463532591?e=2147483647&v=beta&t=GB6ATQ0uEkuXvwYwP4njf-e8wqG0VsjESWawBPB_Kbg',
+    theme: 'from-[#1a2a6c] to-[#b21f1f]',
+    features: ['Zero balance basic account', 'Free digital banking', 'Widest ATM network', 'Govt. Schemes'],
     link: 'https://www.sbi.co.in/'
   },
   {
@@ -39,13 +32,8 @@ const banks = [
     type: 'Private Bank',
     interestRate: '3.00% - 6.50%',
     minBalance: '₹10,000',
-    features: [
-      'Instant account opening',
-      'Free virtual debit card',
-      'Pre-approved loans',
-      '24x7 customer care'
-    ],
-    image: 'https://static.vecteezy.com/system/resources/previews/020/336/263/non_2x/icici-logo-icici-icon-free-free-vector.jpg',
+    theme: 'from-[#232f3e] to-[#000000]',
+    features: ['Instant opening', 'Free virtual debit card', 'Pre-approved loans', 'Wealth management'],
     link: 'https://www.icicibank.com/'
   },
   {
@@ -54,213 +42,210 @@ const banks = [
     type: 'Private Bank',
     interestRate: '3.00% - 6.50%',
     minBalance: '₹2,500',
-    features: [
-      'Digital savings account',
-      'Free virtual debit card',
-      'Pre-approved offers',
-      '24x7 customer support'
-    ],
-    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0t8puDMM1wnf7zYIbaG_DkKAhyDSLIh17UQ&s',
+    theme: 'from-[#800040] to-[#b91c1c]',
+    features: ['Digital savings account', 'Priority Banking', 'Pre-approved offers', 'Smart Rewards'],
     link: 'https://www.axisbank.com/'
   },
   {
     id: 5,
     name: 'Punjab National Bank',
-    type: 'Public Sector Bank',
+    type: 'Public Sector',
     interestRate: '2.90% - 6.25%',
     minBalance: '₹500',
-    features: [
-      'Zero balance account',
-      'Free SMS alerts',
-      'Wide branch network',
-      'Government schemes'
-    ],
-    image: 'https://www.pnbindia.in/images/logo.png',
+    theme: 'from-[#4e0e0e] to-[#9a1c1f]',
+    features: ['Zero balance account', 'Free SMS alerts', 'Wide branch network', 'Secure Deposits'],
     link: 'https://www.pnbindia.in/'
   },
   {
     id: 6,
-    name: 'Kotak Mahindra Bank',
+    name: 'Kotak Mahindra',
     type: 'Private Bank',
     interestRate: '3.50% - 6.50%',
     minBalance: '₹5,000',
-    features: [
-      'Zero balance 811 account',
-      'Free virtual debit card',
-      'Pre-approved loans',
-      '24x7 customer support'
-    ],
-    image: 'https://www.kotak.com/content/dam/Kotak/kotak-logo.svg',
+    theme: 'from-[#ed1c24] to-[#af141a]',
+    features: ['Zero balance 811 account', 'Highest Interest Rates', 'Seamless App experience', '24/7 Support'],
     link: 'https://www.kotak.com/'
-  }
-];
-
-const accountTypes = [
-  {
-    name: 'Savings Account',
-    description: 'Earn interest on your deposits with easy access to your funds',
-    icon: <Wallet className="h-6 w-6 text-blue-600" />,
-    features: ['Interest up to 7%', 'No minimum balance', 'Free debit card', 'Netbanking']
-  },
-  {
-    name: 'Current Account',
-    description: 'Ideal for businesses with high transaction volumes',
-    icon: <CreditCard className="h-6 w-6 text-green-600" />,
-    features: ['Unlimited transactions', 'Overdraft facility', 'Business loans', 'Dedicated RM']
-  },
-  {
-    name: 'Fixed Deposit',
-    description: 'Higher interest rates for fixed term deposits',
-    icon: <Percent className="h-6 w-6 text-yellow-600" />,
-    features: ['Higher interest rates', 'Flexible tenures', 'Loan against FD', 'Auto-renewal']
   }
 ];
 
 const Bank = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-r from-blue-100 via-slate-100 to-orange-100 text-gray-800 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">Compare & Open Bank Accounts</h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Find the perfect bank account that suits your financial needs with our comprehensive comparison.
-          </p>
+    <div className="relative min-h-screen bg-[#FCFBF7] overflow-x-hidden">
+      
+      {/* Animated Background Blobs (MoneyTree Golden Theme) */}
+      <div className="fixed top-0 -left-20 w-96 h-96 bg-[#F3E5AB]/40 rounded-full filter blur-[120px] animate-blob z-0"></div>
+      <div className="fixed top-1/4 -right-20 w-96 h-96 bg-[#FFD700]/10 rounded-full filter blur-[120px] animate-blob animation-delay-2000 z-0"></div>
+      <div className="fixed -bottom-20 left-1/3 w-96 h-96 bg-[#E5E4E2]/50 rounded-full filter blur-[120px] animate-blob animation-delay-4000 z-0"></div>
+
+      <div className="relative z-10 max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
+        
+        {/* Left-Aligned Header */}
+        <div className="mb-16 text-left">
+          <div className="flex items-center gap-3 mb-2">
+            <div className="h-[2px] w-12 bg-[#D4AF37]"></div>
+            <h2 className="text-xs font-black uppercase tracking-[0.4em] text-[#B8860B]">Premium 2026 Collection</h2>
+          </div>
+          <h1 className="text-5xl font-extrabold text-slate-900 tracking-tight italic">
+            MoneyTree Banking
+          </h1>
         </div>
 
-        {/* Account Type Selector */}
-        <div className="mb-12">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">Choose Account Type</h2>
-          <div className="grid md:grid-cols-3 gap-6">
-            {accountTypes.map((account, index) => (
-              <div 
-                key={index}
-                className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 border-2 border-transparent hover:border-blue-200 cursor-pointer"
-              >
-                <div className="h-12 w-12 rounded-full bg-blue-50 flex items-center justify-center mb-4">
-                  {account.icon}
+        {/* Bank Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-24">
+          {banks.map((bank) => (
+            <div 
+              key={bank.id} 
+              className="group bg-white/70 backdrop-blur-md rounded-[2.2rem] p-3 border border-white/80 shadow-[0_4px_20px_rgba(212,175,55,0.05)] hover:shadow-[0_25px_50px_rgba(212,175,55,0.15)] transition-all duration-500 hover:-translate-y-2"
+            >
+              {/* Virtual Bank Card / Passbook Style */}
+              <div className={`relative h-48 w-full bg-gradient-to-br ${bank.theme} rounded-[1.6rem] p-5 text-white overflow-hidden shadow-2xl`}>
+                <div className="relative flex flex-col h-full justify-between z-10">
+                  <div className="flex justify-between items-start">
+                    <div className="space-y-0.5">
+                      <p className="text-[9px] uppercase tracking-widest font-bold opacity-50">{bank.type}</p>
+                      <h3 className="text-lg font-bold tracking-tight">{bank.name}</h3>
+                    </div>
+                    <div className="h-8 w-8 bg-white/10 rounded-full flex items-center justify-center border border-white/20">
+                      <Landmark className="h-4 w-4 text-[#D4AF37]" />
+                    </div>
+                  </div>
+
+                  <div className="flex items-center gap-4">
+                     <div>
+                        <p className="text-[8px] uppercase font-black opacity-50 mb-1">Avg interest</p>
+                        <p className="text-sm font-bold text-[#D4AF37]">{bank.interestRate}</p>
+                     </div>
+                     <div className="h-8 w-px bg-white/10"></div>
+                     <div>
+                        <p className="text-[8px] uppercase font-black opacity-50 mb-1">Min Balance</p>
+                        <p className="text-sm font-bold text-white">{bank.minBalance}</p>
+                     </div>
+                  </div>
+
+                  <div className="flex justify-between items-end">
+                    <p className="text-[8px] uppercase tracking-widest font-bold opacity-40">MoneyTree Verified Account</p>
+                    <div className="flex -space-x-2">
+                      <div className="h-5 w-5 rounded-full bg-[#D4AF37]/40"></div>
+                      <div className="h-5 w-5 rounded-full bg-white/10"></div>
+                    </div>
+                  </div>
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">{account.name}</h3>
-                <p className="text-gray-600 mb-4">{account.description}</p>
-                <ul className="space-y-2 mb-6">
-                  {account.features.map((feature, i) => (
-                    <li key={i} className="flex items-center">
-                      <Check className="h-4 w-4 text-green-500 mr-2" />
-                      <span className="text-sm text-gray-700">{feature}</span>
+                {/* Shine effect */}
+                <div className="absolute top-0 -inset-full h-full w-1/2 z-5 block transform -skew-x-12 bg-gradient-to-r from-transparent via-white/10 to-transparent group-hover:animate-[shine_1.5s_ease-in-out]" />
+              </div>
+
+              {/* Info Area */}
+              <div className="px-4 py-6">
+                <h4 className="text-[10px] font-black uppercase text-[#B8860B] tracking-widest mb-4">Elite Benefits</h4>
+                <ul className="space-y-3 mb-8 min-h-[120px]">
+                  {bank.features.map((feature, index) => (
+                    <li key={index} className="flex items-start gap-2.5">
+                      <div className="mt-1 h-4 w-4 rounded-full bg-[#D4AF37]/10 flex items-center justify-center flex-shrink-0">
+                        <Check className="h-2.5 w-2.5 text-[#B8860B]" strokeWidth={4} />
+                      </div>
+                      <span className="text-[12px] text-slate-600 font-semibold leading-tight">{feature}</span>
                     </li>
                   ))}
                 </ul>
-                <button className="text-blue-600 hover:text-blue-800 font-medium text-sm flex items-center">
-                  View Options
-                  <ArrowRight className="h-4 w-4 ml-1" />
+
+                <button 
+                  onClick={() => window.open(bank.link, '_blank')}
+                  className="w-full py-3.5 rounded-xl bg-slate-900 text-[#D4AF37] font-bold text-xs flex items-center justify-center gap-2 hover:bg-black transition-all active:scale-[0.98] shadow-lg shadow-slate-100"
+                >
+                  Open Digital Account
+                  <ArrowRight className="h-3.5 w-3.5" />
                 </button>
               </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Bank Comparison */}
-        <div className="mb-12">
-          <div className="flex justify-between items-center mb-6">
-            <h2 className="text-2xl font-bold text-gray-900">Compare Banks</h2>
-            <div className="flex items-center">
-              <span className="text-sm text-gray-500 mr-2">Sort by:</span>
-              <select className="border border-gray-300 rounded-md px-3 py-1 text-sm">
-                <option>Interest Rate (High to Low)</option>
-                <option>Minimum Balance (Low to High)</option>
-                <option>Bank Name (A-Z)</option>
-              </select>
             </div>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {banks.map((bank) => (
-              <div key={bank.id} className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
-                <div className="p-6">
-                  <div className="flex items-center justify-between mb-6">
-                    <div className="h-12 w-32">
-                      <img 
-                        src={bank.image} 
-                        alt={bank.name} 
-                        className="h-full w-full object-contain"
-                        onError={(e) => {
-                          e.target.onerror = null;
-                          e.target.src = `https://via.placeholder.com/150x60?text=${bank.name.split(' ').join('+')}`;
-                        }}
-                      />
-                    </div>
-                    <span className="px-3 py-1 bg-blue-100 text-blue-800 text-xs font-medium rounded-full">
-                      {bank.type}
-                    </span>
-                  </div>
-
-                  <div className="grid grid-cols-2 gap-4 mb-6">
-                    <div>
-                      <p className="text-xs text-gray-500">Interest Rate</p>
-                      <p className="font-medium text-gray-900">{bank.interestRate}</p>
-                    </div>
-                    <div>
-                      <p className="text-xs text-gray-500">Min. Balance</p>
-                      <p className="font-medium text-gray-900">{bank.minBalance}</p>
-                    </div>
-                  </div>
-
-                  <div className="mb-6">
-                    <h4 className="font-medium text-gray-900 mb-3">Key Features:</h4>
-                    <ul className="space-y-2">
-                      {bank.features.map((feature, index) => (
-                        <li key={index} className="flex items-start">
-                          <Check className="h-4 w-4 text-green-500 mt-0.5 mr-2 flex-shrink-0" />
-                          <span className="text-sm text-gray-700">{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  <div className="flex justify-between items-center pt-4 border-t border-gray-100">
-                    <a 
-                      href={bank.link} 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="text-blue-600 hover:text-blue-800 text-sm font-medium"
-                    >
-                      Visit Website
-                    </a>
-                    <button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors">
-                      Open Account
-                    </button>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
+          ))}
         </div>
 
-        {/* FAQ Section */}
-        <div className="bg-white rounded-xl shadow-md p-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h2>
-          <div className="space-y-6">
+        {/* FAQ Section with Glassmorphism */}
+        <div className="bg-white/50 backdrop-blur-md rounded-[2.5rem] p-10 border border-white/80 shadow-xl mb-24">
+          <h2 className="text-2xl font-black text-slate-900 mb-8 italic">Banking Intelligence (FAQ)</h2>
+          <div className="grid md:grid-cols-2 gap-10">
             {[
               {
-                question: "What documents do I need to open a bank account?",
-                answer: "Typically, you'll need proof of identity (Aadhaar, PAN, Voter ID, etc.), proof of address (Aadhaar, utility bills, etc.), and passport-sized photographs. Some banks may have additional requirements."
+                q: "Digital vs. Physical Account?",
+                a: "MoneyTree recommends digital accounts for 24/7 access and lower fees, while traditional accounts are better for high-cash volume businesses."
               },
               {
-                question: "Can I open a zero balance account?",
-                answer: "Yes, many public sector banks and some private banks offer zero balance accounts, especially under the Pradhan Mantri Jan Dhan Yojana (PMJDY) scheme."
-              },
-              {
-                question: "How do I choose the right bank account?",
-                answer: "Consider factors like minimum balance requirements, interest rates, ATM and branch network, digital banking features, and additional benefits like debit card offers and customer service quality."
+                q: "Why trust MoneyTree ratings?",
+                a: "We analyze hidden charges, app stability, and actual customer service wait times so you don't have to."
               }
-            ].map((faq, index) => (
-              <div key={index} className="border-b border-gray-100 pb-4">
-                <h3 className="text-lg font-medium text-gray-900 mb-2">{faq.question}</h3>
-                <p className="text-gray-600">{faq.answer}</p>
+            ].map((faq, i) => (
+              <div key={i}>
+                <h3 className="text-sm font-black text-[#B8860B] uppercase tracking-wider mb-2">{faq.q}</h3>
+                <p className="text-sm text-slate-500 font-medium leading-relaxed">{faq.a}</p>
               </div>
             ))}
           </div>
         </div>
       </div>
+
+      {/* Footer Section */}
+      <footer className="relative z-10 bg-white/60 backdrop-blur-3xl border-t border-[#D4AF37]/20 pt-16 pb-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+            
+            <div className="space-y-6">
+              <div className="flex items-center gap-2">
+                <div className="bg-slate-900 p-2 rounded-xl">
+                  <TreeDeciduous className="h-6 w-6 text-[#D4AF37]" />
+                </div>
+                <span className="text-2xl font-black text-slate-900 tracking-tighter">MoneyTree<span className="text-[#D4AF37]">.</span></span>
+              </div>
+              <p className="text-slate-500 text-sm leading-relaxed font-medium">
+                Simplifying Indian Banking since 2026. Every branch, every account, curated for your growth.
+              </p>
+              <div className="flex gap-3">
+                {[Twitter, Instagram, Linkedin].map((Icon, i) => (
+                  <button key={i} className="h-9 w-9 rounded-full bg-white border border-slate-100 flex items-center justify-center text-slate-600 hover:border-[#D4AF37] hover:text-[#B8860B] transition-all">
+                    <Icon className="h-4 w-4" />
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <h4 className="text-[11px] font-black uppercase tracking-[0.2em] text-[#B8860B] mb-6">Banking Services</h4>
+              <ul className="space-y-3 text-[13px] font-bold text-slate-500">
+                <li className="hover:text-[#B8860B] cursor-pointer">Savings Elite</li>
+                <li className="hover:text-[#B8860B] cursor-pointer">Current Pro</li>
+                <li className="hover:text-[#B8860B] cursor-pointer">Fixed Deposits</li>
+                <li className="hover:text-[#B8860B] cursor-pointer">Corporate Banking</li>
+              </ul>
+            </div>
+
+            <div>
+              <h4 className="text-[11px] font-black uppercase tracking-[0.2em] text-[#B8860B] mb-6">Concierge</h4>
+              <ul className="space-y-4 text-[13px] font-bold text-slate-500">
+                <li className="flex items-center gap-3"><Mail className="h-4 w-4 text-[#D4AF37]" /> banks@moneytree.in</li>
+                <li className="flex items-center gap-3"><Globe className="h-4 w-4 text-[#D4AF37]" /> www.moneytree.in</li>
+                <li className="flex items-center gap-3"><Phone className="h-4 w-4 text-[#D4AF37]" /> 1800-MONEY-TREE</li>
+              </ul>
+            </div>
+
+            <div>
+              <h4 className="text-[11px] font-black uppercase tracking-[0.2em] text-[#B8860B] mb-6">Wealth Newsletter</h4>
+              <div className="relative">
+                <input type="email" placeholder="Private Email" className="w-full bg-white border border-slate-200 rounded-xl py-3 px-4 text-xs focus:ring-1 focus:ring-[#D4AF37] outline-none" />
+                <button className="absolute right-2 top-2 h-8 w-8 bg-slate-900 text-[#D4AF37] rounded-lg flex items-center justify-center hover:bg-black">
+                  <ArrowRight className="h-3.5 w-3.5" />
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div className="pt-8 border-t border-slate-100 flex flex-col md:flex-row justify-between items-center gap-4">
+            <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">© 2026 MoneyTree International • Banking Portal</p>
+            <div className="flex gap-6 text-[10px] font-black text-slate-400 uppercase tracking-widest">
+              <span className="hover:text-[#B8860B] cursor-pointer">Privacy</span>
+              <span className="hover:text-[#B8860B] cursor-pointer">Banking Terms</span>
+            </div>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 };
