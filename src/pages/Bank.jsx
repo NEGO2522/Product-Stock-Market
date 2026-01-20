@@ -1,9 +1,24 @@
 import React from 'react';
-import { Building2, Landmark, Wallet, CreditCard, ArrowRight, Percent, Check, TreeDeciduous, Twitter, Instagram, Linkedin, Mail, Phone, Globe } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { 
+  Building2, 
+  Landmark, 
+  Wallet, 
+  CreditCard, 
+  ArrowRight, 
+  Percent, 
+  Check, 
+  TreeDeciduous, 
+  Twitter, 
+  Instagram, 
+  Linkedin, 
+  Mail, 
+  Phone, 
+  Globe,
+  Home 
+} from 'lucide-react';
 
-/* Ensure your global CSS includes the 'blob' and 'shine' animations 
-  provided in the previous Credit Card response.
-*/
+/* Ensure your global CSS includes the 'blob' and 'shine' animations */
 
 const banks = [
   {
@@ -72,6 +87,17 @@ const Bank = () => {
   return (
     <div className="relative min-h-screen bg-[#FCFBF7] overflow-x-hidden">
       
+      {/* Fixed Home Button - Top Right */}
+      <div className="fixed top-8 right-8 z-50">
+        <Link 
+          to="/" 
+          className="group flex items-center justify-center h-12 w-12 rounded-full bg-white shadow-xl border border-[#D4AF37]/20 text-slate-900 hover:text-[#B8860B] hover:border-[#D4AF37] transition-all duration-300 active:scale-95"
+          title="Back to Home"
+        >
+          <Home className="h-5 w-5 transition-transform group-hover:scale-110" />
+        </Link>
+      </div>
+
       {/* Animated Background Blobs (MoneyTree Golden Theme) */}
       <div className="fixed top-0 -left-20 w-96 h-96 bg-[#F3E5AB]/40 rounded-full filter blur-[120px] animate-blob z-0"></div>
       <div className="fixed top-1/4 -right-20 w-96 h-96 bg-[#FFD700]/10 rounded-full filter blur-[120px] animate-blob animation-delay-2000 z-0"></div>
@@ -79,7 +105,7 @@ const Bank = () => {
 
       <div className="relative z-10 max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
         
-        {/* Left-Aligned Header */}
+        {/* Header */}
         <div className="mb-16 text-left">
           <div className="flex items-center gap-3 mb-2">
             <div className="h-[2px] w-12 bg-[#D4AF37]"></div>
@@ -97,7 +123,7 @@ const Bank = () => {
               key={bank.id} 
               className="group bg-white/70 backdrop-blur-md rounded-[2.2rem] p-3 border border-white/80 shadow-[0_4px_20px_rgba(212,175,55,0.05)] hover:shadow-[0_25px_50px_rgba(212,175,55,0.15)] transition-all duration-500 hover:-translate-y-2"
             >
-              {/* Virtual Bank Card / Passbook Style */}
+              {/* Virtual Bank Card */}
               <div className={`relative h-48 w-full bg-gradient-to-br ${bank.theme} rounded-[1.6rem] p-5 text-white overflow-hidden shadow-2xl`}>
                 <div className="relative flex flex-col h-full justify-between z-10">
                   <div className="flex justify-between items-start">
@@ -111,15 +137,15 @@ const Bank = () => {
                   </div>
 
                   <div className="flex items-center gap-4">
-                     <div>
+                      <div>
                         <p className="text-[8px] uppercase font-black opacity-50 mb-1">Avg interest</p>
                         <p className="text-sm font-bold text-[#D4AF37]">{bank.interestRate}</p>
-                     </div>
-                     <div className="h-8 w-px bg-white/10"></div>
-                     <div>
+                      </div>
+                      <div className="h-8 w-px bg-white/10"></div>
+                      <div>
                         <p className="text-[8px] uppercase font-black opacity-50 mb-1">Min Balance</p>
                         <p className="text-sm font-bold text-white">{bank.minBalance}</p>
-                     </div>
+                      </div>
                   </div>
 
                   <div className="flex justify-between items-end">
@@ -130,7 +156,6 @@ const Bank = () => {
                     </div>
                   </div>
                 </div>
-                {/* Shine effect */}
                 <div className="absolute top-0 -inset-full h-full w-1/2 z-5 block transform -skew-x-12 bg-gradient-to-r from-transparent via-white/10 to-transparent group-hover:animate-[shine_1.5s_ease-in-out]" />
               </div>
 
@@ -160,7 +185,7 @@ const Bank = () => {
           ))}
         </div>
 
-        {/* FAQ Section with Glassmorphism */}
+        {/* FAQ Section */}
         <div className="bg-white/50 backdrop-blur-md rounded-[2.5rem] p-10 border border-white/80 shadow-xl mb-24">
           <h2 className="text-2xl font-black text-slate-900 mb-8 italic">Banking Intelligence (FAQ)</h2>
           <div className="grid md:grid-cols-2 gap-10">

@@ -1,9 +1,22 @@
 import React from 'react';
-import { BarChart2, TrendingUp, Shield, Zap, Check, ArrowRight, TreeDeciduous, Twitter, Instagram, Linkedin, Mail, Phone, Globe, Star } from 'lucide-react';
-
-/* Ensure your global CSS includes the 'blob' and 'shine' animations 
-  from the previous responses for the full effect.
-*/
+import { Link } from 'react-router-dom';
+import { 
+  BarChart2, 
+  TrendingUp, 
+  Shield, 
+  Zap, 
+  Check, 
+  ArrowRight, 
+  TreeDeciduous, 
+  Twitter, 
+  Instagram, 
+  Linkedin, 
+  Mail, 
+  Phone, 
+  Globe, 
+  Star,
+  Home 
+} from 'lucide-react';
 
 const brokers = [
   {
@@ -72,7 +85,18 @@ const Brokers = () => {
   return (
     <div className="relative min-h-screen bg-[#FCFBF7] overflow-x-hidden">
       
-      {/* Animated Background Blobs (MoneyTree Golden Theme) */}
+      {/* Sticky Home Button - Top Right */}
+      <div className="fixed top-8 right-8 z-50">
+        <Link 
+          to="/" 
+          className="group flex items-center justify-center h-12 w-12 rounded-full bg-white shadow-xl border border-[#D4AF37]/20 text-slate-900 hover:text-[#B8860B] hover:border-[#D4AF37] transition-all duration-300 active:scale-95"
+          title="Back to Home"
+        >
+          <Home className="h-5 w-5 transition-transform group-hover:scale-110" />
+        </Link>
+      </div>
+
+      {/* Animated Background Blobs */}
       <div className="fixed top-0 -left-20 w-96 h-96 bg-[#F3E5AB]/40 rounded-full filter blur-[120px] animate-blob z-0"></div>
       <div className="fixed top-1/4 -right-20 w-96 h-96 bg-[#FFD700]/10 rounded-full filter blur-[120px] animate-blob animation-delay-2000 z-0"></div>
       <div className="fixed -bottom-20 left-1/3 w-96 h-96 bg-[#E5E4E2]/50 rounded-full filter blur-[120px] animate-blob animation-delay-4000 z-0"></div>
@@ -112,15 +136,15 @@ const Brokers = () => {
                   </div>
 
                   <div className="flex items-center gap-4">
-                     <div>
+                      <div>
                         <p className="text-[8px] uppercase font-black opacity-50 mb-1">Brokerage</p>
                         <p className="text-sm font-bold text-[#D4AF37]">Flat Fee Model</p>
-                     </div>
-                     <div className="h-8 w-px bg-white/10"></div>
-                     <div>
+                      </div>
+                      <div className="h-8 w-px bg-white/10"></div>
+                      <div>
                         <p className="text-[8px] uppercase font-black opacity-50 mb-1">Demat Charge</p>
                         <p className="text-sm font-bold text-white">Competitive</p>
-                     </div>
+                      </div>
                   </div>
 
                   <div className="flex justify-between items-end">
@@ -128,7 +152,6 @@ const Brokers = () => {
                     <TrendingUp className="h-5 w-5 text-[#D4AF37] opacity-50" />
                   </div>
                 </div>
-                {/* Shine animation */}
                 <div className="absolute top-0 -inset-full h-full w-1/2 z-5 block transform -skew-x-12 bg-gradient-to-r from-transparent via-white/10 to-transparent group-hover:animate-[shine_1.5s_ease-in-out]" />
               </div>
 
