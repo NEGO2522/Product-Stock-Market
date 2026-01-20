@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate, useLocation } from 'react-router-dom';
-import { Mail } from 'lucide-react';
+import { Link, useNavigate } from 'react-router-dom';
+import { Mail, Loader2, ShieldCheck, Zap, Home } from 'lucide-react';
 import { 
   auth, 
   googleProvider, 
@@ -18,9 +18,7 @@ const Login = () => {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-  const location = useLocation();
 
-  // Check if we're handling a sign-in link
   useEffect(() => {
     if (isSignInWithEmailLink(auth, window.location.href)) {
       let email = window.localStorage.getItem('emailForSignIn');
@@ -31,17 +29,15 @@ const Login = () => {
       if (email) {
         setLoading(true);
         signInWithEmailLink(auth, email, window.location.href)
-          .then((result) => {
+          .then(() => {
             window.localStorage.removeItem('emailForSignIn');
             navigate('/dashboard');
           })
           .catch((error) => {
-            console.error('Error signing in with email link', error);
-            setError('Error signing in. Please try again.');
+            console.error('Error signing in', error);
+            setError('The sign-in link is invalid or has expired.');
           })
-          .finally(() => {
-            setLoading(false);
-          });
+          .finally(() => setLoading(false));
       }
     }
   }, [navigate]);
@@ -49,11 +45,7 @@ const Login = () => {
   const handleEmailSubmit = async (e) => {
     e.preventDefault();
     setError('');
-    
-    if (!email) {
-      setError('Please enter your email address');
-      return;
-    }
+    if (!email) return setError('Please enter your email address');
 
     try {
       setLoading(true);
@@ -61,8 +53,7 @@ const Login = () => {
       window.localStorage.setItem('emailForSignIn', email);
       setEmailSent(true);
     } catch (err) {
-      console.error('Error sending sign-in link:', err);
-      setError('Error sending sign-in link. Please try again.');
+      setError('Failed to send link. Please check your connection.');
     } finally {
       setLoading(false);
     }
@@ -74,105 +65,130 @@ const Login = () => {
       await signInWithPopup(auth, googleProvider);
       navigate('/dashboard');
     } catch (err) {
-      console.error('Google sign-in error:', err);
-      setError('Error signing in with Google. Please try again.');
+      setError('Google authentication failed. Please try again.');
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-100 via-slate-100 to-orange-100 p-4">
-      <div className="w-full max-w-md">
-        <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
-          {/* Header */}
-          <div className="px-8 pt-8 pb-2">
-            <h2 className="text-3xl font-bold text-gray-900 mb-2">Welcome back</h2>
-            <p className="text-gray-600">Sign in to your account to continue</p>
-          </div>
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-slate-50 to-orange-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8 relative">
+      
+      {/* Home Icon (Top Left Corner) */}
+      <div className="absolute top-6 left-6 sm:top-8 sm:left-8">
+        <Link 
+          to="/" 
+          className="group flex items-center justify-center h-10 w-10 rounded-full bg-white shadow-sm border border-gray-100 text-gray-500 hover:text-blue-600 hover:shadow-md hover:border-blue-100 transition-all duration-200"
+          title="Back to Home"
+        >
+          <Home className="h-5 w-5 transition-transform group-hover:scale-110" />
+        </Link>
+      </div>
 
-          {/* Error Message */}
+      <div className="sm:mx-auto sm:w-full sm:max-w-md px-4">
+        <div className="flex justify-center mb-6">
+          <div className="h-12 w-12 rounded-xl bg-blue-600 flex items-center justify-center shadow-lg shadow-blue-200">
+            <Zap className="h-7 w-7 text-white" />
+          </div>
+        </div>
+        <h2 className="text-center text-3xl font-extrabold text-gray-900 tracking-tight">
+          Welcome back
+        </h2>
+        <p className="mt-2 text-center text-sm text-gray-600">
+          Access your Money Tree dashboard securely
+        </p>
+      </div>
+
+      <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md px-4">
+        <div className="bg-white py-8 px-6 shadow-2xl shadow-blue-100/50 sm:rounded-2xl sm:px-10 border border-gray-100">
+          
           {error && (
-            <div className="px-8 py-3 bg-red-50 text-red-600 text-sm">
+            <div className="mb-6 p-4 rounded-lg bg-red-50 border border-red-100 flex items-center text-red-700 text-sm">
+              <ShieldCheck className="h-5 w-5 mr-3 flex-shrink-0" />
               {error}
             </div>
           )}
 
           {emailSent ? (
-            <div className="px-8 py-6">
-              <div className="bg-green-50 border border-green-200 text-green-700 px-4 py-3 rounded-lg mb-6">
-                <p>We've sent a sign-in link to <span className="font-medium">{email}</span>.</p>
-                <p className="mt-1">Please check your email and click the link to sign in.</p>
+            <div className="text-center">
+              <div className="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-green-100 mb-4">
+                <Mail className="h-6 w-6 text-green-600" />
               </div>
+              <h3 className="text-lg font-bold text-gray-900 mb-2">Check your email</h3>
+              <p className="text-sm text-gray-600 mb-6 leading-relaxed">
+                We've sent a magic link to <span className="font-semibold text-gray-900">{email}</span>. Click it to log in.
+              </p>
               <button
-                type="button"
                 onClick={() => setEmailSent(false)}
-                className="w-full text-center text-blue-600 hover:text-blue-800 font-medium"
+                className="text-sm font-semibold text-blue-600 hover:text-blue-700 transition-colors"
               >
-                Use a different email
+                Use a different email address
               </button>
             </div>
           ) : (
-            <form onSubmit={handleEmailSubmit} className="px-8 py-6">
-              {/* Email Field */}
-              <div className="mb-6">
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                  Email address
-                </label>
-                <div className="relative">
-                  <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                    <Mail className="h-5 w-5 text-gray-400" />
+            <div className="space-y-6">
+              <form onSubmit={handleEmailSubmit}>
+                <div>
+                  <label htmlFor="email" className="block text-sm font-semibold text-gray-700">
+                    Email Address
+                  </label>
+                  <div className="mt-2 relative">
+                    <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                      <Mail className="h-5 w-5 text-gray-400" />
+                    </div>
+                    <input
+                      id="email"
+                      type="email"
+                      required
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      className="block w-full pl-10 pr-3 py-3 border border-gray-200 rounded-xl leading-5 bg-gray-50 placeholder-gray-400 focus:outline-none focus:bg-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all sm:text-sm"
+                      placeholder="name@company.com"
+                    />
                   </div>
-                  <input
-                    id="email"
-                    name="email"
-                    type="email"
-                    autoComplete="email"
-                    required
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                    placeholder="you@example.com"
-                  />
                 </div>
-              </div>
 
-              <button
-                type="submit"
-                disabled={loading}
-                className={`w-full flex justify-center items-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-gray-900 hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors mb-4 ${loading ? 'opacity-70 cursor-not-allowed' : ''}`}
-              >
-                {loading ? 'Sending sign-in link...' : 'Send me a sign-in link'}
-              </button>
+                <div className="mt-6">
+                  <button
+                    type="submit"
+                    disabled={loading}
+                    className="w-full flex justify-center py-3 px-4 border border-transparent rounded-xl shadow-md text-sm font-bold text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+                  >
+                    {loading ? <Loader2 className="h-5 w-5 animate-spin" /> : 'Continue with Email'}
+                  </button>
+                </div>
+              </form>
 
-              <div className="relative my-4">
+              <div className="relative">
                 <div className="absolute inset-0 flex items-center">
-                  <div className="w-full border-t border-gray-300"></div>
+                  <div className="w-full border-t border-gray-100"></div>
                 </div>
                 <div className="relative flex justify-center text-sm">
-                  <span className="px-2 bg-white text-gray-500">Or continue with</span>
+                  <span className="px-2 bg-white text-gray-400 font-medium uppercase tracking-wider text-[10px]">
+                    Secure Social Login
+                  </span>
                 </div>
               </div>
 
-              <button
-                type="button"
-                onClick={handleGoogleSignIn}
-                disabled={loading}
-                className="w-full flex items-center justify-center py-2.5 px-4 border border-gray-300 rounded-lg shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors"
-              >
-                <FcGoogle className="h-5 w-5 mr-2" />
-                Continue with Google
-              </button>
-            </form>
+              <div>
+                <button
+                  onClick={handleGoogleSignIn}
+                  disabled={loading}
+                  className="w-full flex items-center justify-center py-3 px-4 border border-gray-200 rounded-xl bg-white text-sm font-bold text-gray-700 hover:bg-gray-50 shadow-sm transition-all focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                >
+                  <FcGoogle className="h-5 w-5 mr-3" />
+                  Continue with Google
+                </button>
+              </div>
+            </div>
           )}
+        </div>
 
-          <div className="px-8 py-6 bg-gray-50 border-t border-gray-100 rounded-b-2xl text-center">
-            <p className="text-sm text-gray-600">
-              By continuing, you agree to our{' '}
-              <Link to="/terms" className="font-medium text-blue-600 hover:text-blue-800">Terms of Service</Link> and{' '}
-              <Link to="/privacy-policy" className="font-medium text-blue-600 hover:text-blue-800">Privacy Policy</Link>.
-            </p>
-          </div>
+        <div className="mt-10 text-center">
+          <p className="text-[11px] text-gray-400 leading-relaxed max-w-[280px] mx-auto uppercase tracking-tighter">
+            Protected by bank-level 256-bit encryption. <br />
+            © 2026 Money Tree Financial.
+          </p>
         </div>
       </div>
     </div>
