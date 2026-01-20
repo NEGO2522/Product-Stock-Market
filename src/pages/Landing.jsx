@@ -159,7 +159,7 @@ const Landing = () => {
           <div className="lg:w-1/2 mt-6 lg:mt-0">
             <div className="bg-white p-3 rounded-xl shadow-xl h-72 md:h-80">
               <img 
-                src="/Stock.jpg" 
+                src="/stock.jpg" 
                 alt="Stock Market Data Visualization"
                 className="w-full h-full object-cover rounded-lg"
               />
